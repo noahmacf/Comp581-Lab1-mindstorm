@@ -95,3 +95,20 @@ while not btn.any(): # loops until button is pressed
 # drive until wall is 50 cm away
 while ultrasonic_sensor.distance > 500:
     robot.drive(800, 0) # drives at a rate of 800 and angle of 0
+robot.stop()
+ev3.speaker.beep() # its finished
+
+# wait for button press
+while not btn.any(): # loops until button is pressed
+    sleep(0.01)  # Wait 0.01 second
+
+# touch the surface
+while not touch_sensor.pressed():
+    robot.drive(800, 0)
+robot.stop()
+
+# drive until wall is 50 cm away
+while ultrasonic_sensor.distance < 500:
+    robot.drive(-800, 0) # drives backwards at a rate of 800 and angle of 0
+robot.stop()
+ev3.speaker.beep() # its finished
