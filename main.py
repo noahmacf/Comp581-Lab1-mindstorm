@@ -25,16 +25,16 @@ ultrasonic_sensor = UltrasonicSensor(Port.S1)
 
 # wait for button press
 ev3.speaker.beep() # its ready
-while not btn.any(): # loops until button is pressed
-    sleep(0.01)  # Wait 0.01 second
+while not Button.CENTER in brick.buttons(): # loops until button is pressed
+    wait(10)  # Wait 0.01 second
 
 # move 1.2 meters
 robot.straight(1200) # move forward 1.2 meters
 ev3.speaker.beep() # its finished
 
 # wait for button press
-while not btn.any(): # loops until button is pressed
-    sleep(0.01)  # Wait 0.01 second
+while not Button.CENTER in brick.buttons(): # loops until button is pressed
+    wait(10)  # Wait 0.01 second
 
 # drive until wall is 50 cm away
 while ultrasonic_sensor.distance > 500:
@@ -43,8 +43,8 @@ robot.stop()
 ev3.speaker.beep() # its finished
 
 # wait for button press
-while not btn.any(): # loops until button is pressed
-    sleep(0.01)  # Wait 0.01 second
+while not btn.Button.CENTER in brick.buttons(): # loops until button is pressed
+    wait(10)  # Wait 0.01 second
 
 # touch the surface
 while not touch_sensor.pressed():
