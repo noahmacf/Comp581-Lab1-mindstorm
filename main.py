@@ -62,20 +62,6 @@ AXLE_TRACK = 104
 robot = DriveBase(left_motor, right_motor, WHEEL_DIAMETER, AXLE_TRACK)
 touch_sensor = TouchSensor(port = Port.S1)
 ultrasonic_sensor = UltrasonicSensor(Port.S3)
-button_pressed = Button.CENTER in EV3Brick.buttons
-
-# Example code
-ev3.speaker.beep()
-
-motor1 = Motor(port = Port.B, positive_direction = Direction.COUNTERCLOCKWISE)
-
-motor1.run(speed = 180)
-motor1.run_target(speed = 180, target_angle = 360, then=Stop.HOLD, wait = True)
-motor1.brake()
-
-touch_sensor = TouchSensor(port = Port.S1)
-
-touch_sensor.pressed()
 
 # Lab code
 
