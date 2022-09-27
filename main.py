@@ -55,9 +55,16 @@ from pybricks.media.ev3dev import SoundFile, ImageFile
 
 # Create your objects here.
 ev3 = EV3Brick()
+left_motor = Motor(Port.A)
+right_motor = Motor(Port.B)
+WHEEL_DIAMETER = 55
+AXLE_TRACK = 104
+robot = DriveBase(left_motor, right_motor, WHEEL_DIAMETER, AXLE_TRACK)
+touch_sensor = TouchSensor(port = Port.S1)
+ultrasonic_sensor = UltrasonicSensor(Port.S3)
+button_pressed = Button.CENTER in EV3Brick.buttons
 
-
-# Write your program here.
+# Example code
 ev3.speaker.beep()
 
 motor1 = Motor(port = Port.B, positive_direction = Direction.COUNTERCLOCKWISE)
@@ -69,3 +76,22 @@ motor1.brake()
 touch_sensor = TouchSensor(port = Port.S1)
 
 touch_sensor.pressed()
+
+# Lab code
+
+# wait for button press
+ev3.speaker.beep() # its ready
+while not btn.any(): # loops until button is pressed
+    sleep(0.01)  # Wait 0.01 second
+
+# move 1.2 meters
+robot.straight(1200) # move forward 1.2 meters
+ev3.speaker.beep() # its finished
+
+# wait for button press
+while not btn.any(): # loops until button is pressed
+    sleep(0.01)  # Wait 0.01 second
+
+# drive until wall is 50 cm away
+while ultrasonic_sensor.distance > 500:
+    robot.drive(800, 0) # drives at a rate of 800 and angle of 0
