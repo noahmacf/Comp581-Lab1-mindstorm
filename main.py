@@ -15,7 +15,7 @@ from pybricks.media.ev3dev import SoundFile, ImageFile
 ev3 = EV3Brick()
 left_motor = Motor(Port.B)
 right_motor = Motor(Port.A)
-WHEEL_DIAMETER = 55
+WHEEL_DIAMETER = 45
 AXLE_TRACK = 104
 robot = DriveBase(left_motor, right_motor, WHEEL_DIAMETER, AXLE_TRACK)
 touch_sensor = TouchSensor(port = Port.S2)
